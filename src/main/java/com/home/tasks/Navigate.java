@@ -1,5 +1,6 @@
 package com.home.tasks;
 
+import com.home.userinterfaces.PageOption;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Performable;
 import net.serenitybdd.screenplay.Task;
@@ -9,21 +10,21 @@ import static net.serenitybdd.screenplay.Tasks.instrumented;
 
 public class Navigate implements Task {
 
-    private final String page;
+    private final PageOption pageOption;
 
-    public Navigate(String page) {
-        this.page = page;
+    public Navigate(PageOption pageOption) {
+        this.pageOption = pageOption;
     }
 
     @Override
-    @Step("{0} navega a la opción #page")
+    @Step("{0} navigate to the page: #page")
     public <T extends Actor> void performAs(T theActor) {
         theActor.attemptsTo(
-                Open.browserOn().thePageNamed(page)
+                Open.browserOn().thePageNamed(pageOption.url())
         );
     }
 
-    public static Performable to(String page) {
-        return instrumented(Navigate.class, page);
+    public static Performable to(PageOption pageOption) {
+        return instrumented(Navigate.class, pageOption);
     }
 }

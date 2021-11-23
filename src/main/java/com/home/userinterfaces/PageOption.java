@@ -2,7 +2,7 @@ package com.home.userinterfaces;
 
 public enum PageOption {
 
-    CALCULATOR_HOME("home.page");
+    CALCULATOR_PAGE("calculator.page");
 
     private final String url;
 
